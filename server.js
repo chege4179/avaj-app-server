@@ -24,12 +24,14 @@ app.use("/admin",AdminRoutes)
 app.use("/doctor",DoctorRoutes)
 
 
-app.get("/",(req,res) => {
+app.get("/",async (req,res) => {
 	return res.send("<h1>iDOC API</h1>")
 })
 
 app.listen(process.env.PORT,() => {
 	console.log(`Server started on PORT ${process.env.PORT}`)
 })
-
+if (process.env.NODE_ENV ==="production"){
+	module.exports = app
+}
 
